@@ -22,13 +22,13 @@ def parse_args():
     parser.add_argument('--max-obstacles', type=int, default=3)
 
     parser.add_argument('--logdir', type=str, default="./logs")
-    parser.add_argument('--num-threads', type=int, default=1)
+    parser.add_argument('--num-threads', type=int, default=4)
     parser.add_argument('--num-train-threads', type=int, default=1)
 
     boolean_flag(parser, "ddpg-wrapper", default=False)
-    parser.add_argument('--skip-frames', type=int, default=1)
-    parser.add_argument('--fail-reward', type=float, default=0.0)
-    parser.add_argument('--reward-scale', type=float, default=1.)
+    parser.add_argument('--skip-frames', type=int, default=5)
+    parser.add_argument('--fail-reward', type=float, default=-0.2)
+    parser.add_argument('--reward-scale', type=float, default=10)
     boolean_flag(parser, "flip-state-action", default=False)
 
     for agent in ["actor", "critic"]:
@@ -47,7 +47,7 @@ def parse_args():
     parser.add_argument('--loss-type', type=str, default="quadric-linear")
     parser.add_argument('--grad-clip', type=float, default=10.)
 
-    parser.add_argument('--tau', default=0.01, type=float)
+    parser.add_argument('--tau', default=0.0001, type=float)
 
     parser.add_argument('--train-steps', type=int, default=int(1e4))
     parser.add_argument('--batch-size', type=int, default=256)  # per worker
@@ -58,8 +58,8 @@ def parse_args():
     parser.add_argument('--prioritized-replay-alpha', default=0.6, type=float)
     parser.add_argument('--prioritized-replay-beta0', default=0.4, type=float)
 
-    parser.add_argument('--initial-epsilon', default=1., type=float)
-    parser.add_argument('--final-epsilon', default=0.01, type=float)
+    parser.add_argument('--initial-epsilon', default=0.5, type=float)
+    parser.add_argument('--final-epsilon', default=0.001, type=float)
     parser.add_argument('--max-episodes', default=int(1e4), type=int)
     parser.add_argument('--max-update-steps', default=int(5e6), type=int)
     parser.add_argument('--epsilon-cycle-len', default=int(2e2), type=int)
