@@ -60,7 +60,7 @@ class DdpgWrapper(gym.Wrapper):
 
 
 def create_env(args):
-    env = RunEnv(visualize=False, max_obstacles=args.max_obstacles)
+    env = RunEnv(visualize=True, max_obstacles=args.max_obstacles)
 
     if hasattr(args, "baseline_wrapper") or hasattr(args, "ddpg_wrapper"):
         env = DdpgWrapper(env, args)
