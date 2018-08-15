@@ -18,11 +18,11 @@ def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--difficulty', type=int, default=2)
+    parser.add_argument('--difficulty', type=int, default=0)
     parser.add_argument('--max-obstacles', type=int, default=3)
 
     parser.add_argument('--logdir', type=str, default="./logs")
-    parser.add_argument('--num-threads', type=int, default=4)
+    parser.add_argument('--num-threads', type=int, default=3)
     parser.add_argument('--num-train-threads', type=int, default=1)
 
     boolean_flag(parser, "ddpg-wrapper", default=False)
